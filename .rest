@@ -1,0 +1,105 @@
+### 🧍 Registrera en ny användare
+POST http://localhost:3000/register
+Content-Type: application/json
+
+{
+  "name": "testuser",
+  "email": "test@example.com",
+  "password": "test123"
+}
+
+### 🔐 Logga in och hämta token
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+  "name": "testuser",
+  "password": "test123"
+}
+
+
+### 🧾 Skapa en ny film (Endast admin)
+POST http://localhost:3000/movies
+Content-Type: application/json
+Authorization: Bearer <ADMIN_TOKEN>
+
+{
+  "title": "The Matrix",
+  "director": ["The Wachowskis"],
+  "releaseYear": 1999,
+  "genre": ["Sci-Fi", "Action"]
+}
+
+### ✏️ Uppdatera film (Endast admin)
+PUT http://localhost:3000/movies/<MOVIE_ID>
+Content-Type: application/json
+Authorization: Bearer <ADMIN_TOKEN>
+
+{
+  "title": "The Matrix Reloaded"
+}
+
+### 🗑️ Ta bort film och relaterade recensioner (Endast admin)
+DELETE http://localhost:3000/movies/<MOVIE_ID>
+Authorization: Bearer <ADMIN_TOKEN>
+
+
+### 📝 Skapa en recension för en film
+POST http://localhost:3000/reviews
+Content-Type: application/json
+Authorization: Bearer <TOKEN>
+
+{
+  "movieId": "<MOVIE_ID>",
+  "rating": 8,
+  "comment": "Grym film!"
+}
+
+### ✏️ Uppdatera en recension (endast om ägare)
+PUT http://localhost:3000/reviews/<REVIEW_ID>
+Content-Type: application/json
+Authorization: Bearer <TOKEN>
+
+{
+  "rating": 9,
+  "comment": "Ännu bättre andra gången."
+}
+
+### 🗑️ Ta bort en recension (endast om ägare)
+DELETE http://localhost:3000/reviews/<REVIEW_ID>
+Authorization: Bearer <TOKEN>
+
+
+### 📄 Hämta information om inloggad användare
+GET http://localhost:3000/user
+Authorization: Bearer <TOKEN>
+
+### 📄 Hämta alla recensioner från inloggad användare
+GET http://localhost:3000/user/review
+Authorization: Bearer <TOKEN>
+
+### 🔍 Hämta användarnamn via userId
+GET http://localhost:3000/user/<USER_ID>
+Authorization: Bearer <TOKEN>
+
+### ❌ Radera inloggad användare och alla deras recensioner
+DELETE http://localhost:3000/user
+Authorization: Bearer <TOKEN>
+
+
+### 🎬 Hämta alla filmer
+GET http://localhost:3000/movies
+
+### 🎬 Hämta detaljer om en specifik film
+GET http://localhost:3000/movies/<MOVIE_ID>
+
+### 💬 Hämta alla recensioner för en specifik film
+GET http://localhost:3000/movies/<MOVIE_ID>/reviews
+
+
+### 🧾 Hämta alla recensioner (Endast admin)
+GET http://localhost:3000/reviews
+Authorization: Bearer <ADMIN_TOKEN>
+
+### 🔍 Hämta specifik recension via ID
+GET http://localhost:3000/reviews/<REVIEW_ID>
