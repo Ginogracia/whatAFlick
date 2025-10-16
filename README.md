@@ -1,7 +1,2 @@
 ﻿# whatAFlick
 
-
-
-**Redovisningslänk:**
-
-https://drive.google.com/file/d/144ye7H8SVItPD-H-2nWjgfupwIvp8ZPL/view?usp=sharing
