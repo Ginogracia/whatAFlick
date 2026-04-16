@@ -12,7 +12,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 
-const swaggerDocument = YAML.load('./docs/swagger.yaml'); // adjust path as needed
+// const swaggerDocument = YAML.load('./docs/swagger.yaml'); // adjust path as needed
 
 // Middleware
 app.use(express.json());
@@ -26,7 +26,7 @@ const reviewRoute = require('./routes/reviews');
 const userRoute = require('./routes/user');
 
 // Swagger Stuff
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+// app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // Use routes
 app.use('/register', registerRoute);
@@ -36,7 +36,7 @@ app.use('/reviews', reviewRoute);
 app.use('/', userRoute); // handles /user and related routes
 
 // Connect to MongoDB
-mongoose.connect(process.env.MONGO_URI)
+mongoose.connect(process.env.MONGODB_URI)
   .then(() => console.log('✅ MongoDB connected'))
   .catch(err => console.error('❌ MongoDB error:', err));
 
